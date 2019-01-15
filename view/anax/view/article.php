@@ -8,7 +8,7 @@ $filter = $this->di->get("textfilter");
 <div>
     <h1> <?= $post->title?></h1>
     <p> <?= $post->content?></p>
-    <p><a href=<?= url("user/profile/" . $post->userId) ?>> <?= $post->userId; ?></a></p>
+    <p><i>Posted by:</i><a href=<?= url("user/profile/" . $post->userId) ?>> <?= $post->userId; ?></a></p>
 </div>
 
 <h1> Comments </h1>

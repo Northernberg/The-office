@@ -152,15 +152,15 @@ class ArticleController implements ContainerInjectableInterface
         $comments->setDb($this->di->get("dbqb"));
 
         //Find normal comments
-        $ArticleComments = new ArticleComment();
-        $ArticleComments->setDb($this->di->get("dbqb"));
+        $articleComments = new ArticleComment();
+        $articleComments->setDb($this->di->get("dbqb"));
 
         $page = $this->di->get("page");
         $page->add("anax/view/article", [
             "post" => $article,
             "answers" => $responses->findAllWhere("articleId = ?", $pageId),
             "answerForm" => $answer->getHTML(),
-            "articleComments" => $ArticleComments->findAllWhere("articleId = ?", $pageId),
+            "articleComments" => $articleComments->findAllWhere("articleId = ?", $pageId),
             "comments" => $comments->findAllWhere("articleId = ?", $pageId),
             "commentForm" => $commentForm->getHTML(),
         ]);

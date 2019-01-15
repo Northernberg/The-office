@@ -64,7 +64,7 @@ class UserLoginForm extends FormModel
         // Try to login
         $user = new User();
         $user->setDb($this->di->get("dbqb"));
-        $res = $user->verifyPassword($username, $password);
+        $user->verifyPassword($username, $password);
 
         // $user is null if user is not found
         if (!$user || !password_verify($password, $user->password)) {

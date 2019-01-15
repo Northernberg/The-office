@@ -6,4 +6,4 @@ namespace Anax\View;
 
 <?= $form ?>
 
-<p><a href="<?= url("user/profile/" . $user->username ) ?>"> Back to profile </a></p>
+<p><a href="<?= url("user/profile/" . $user->username) ?>"> Back to profile </a></p>
