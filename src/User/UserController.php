@@ -132,7 +132,7 @@ class UserController implements ContainerInjectableInterface
         $user->setDb($this->di->get("dbqb"));
         $user->find("id", $id);
 
-        $form = new EditProfileForm($this->di,$id);
+        $form = new EditProfileForm($this->di, $id);
         $form->check();
 
         $page = $this->di->get("page");
@@ -153,12 +153,13 @@ class UserController implements ContainerInjectableInterface
         $user->setDb($this->di->get("dbqb"));
         $user->find("id", $id);
 
-        $form = new EditPasswordForm($this->di,$id);
+        $form = new EditPasswordForm($this->di, $id);
         $form->check();
 
         $page = $this->di->get("page");
 
         $page->add("anax/view/editPassword", [
+            "user" => $user,
             "form" => $form->getHTML()
         ]);
 

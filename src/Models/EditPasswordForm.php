@@ -76,9 +76,9 @@ class EditPasswordForm extends FormModel
         $user->find("id", $id);
 
         if (!password_verify($password, $user->password)) {
-           $this->form->rememberValues();
-           $this->form->addOutput("Old password incorrect");
-           return false;
+            $this->form->rememberValues();
+            $this->form->addOutput("Old password incorrect");
+            return false;
         }
 
         // Save to database

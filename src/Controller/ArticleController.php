@@ -16,6 +16,7 @@ use Anax\Models\AnswerForm;
 use Anax\Models\Answers;
 use Anax\Models\Comment;
 use Anax\Models\ArticleComment;
+
 /**
  * A sample controller to show how a controller class can be implemented.
  * The controller will be injected with $di if implementing the interface
@@ -92,7 +93,8 @@ class ArticleController implements ContainerInjectableInterface
     }
 
 
-    public function commentAction($id) {
+    public function commentAction($id)
+    {
         $title = "Comment";
         $comments = new CommentAnswerForm($this->di, $id);
         $comments->check();
@@ -158,7 +160,7 @@ class ArticleController implements ContainerInjectableInterface
             "post" => $article,
             "answers" => $responses->findAllWhere("articleId = ?", $pageId),
             "answerForm" => $answer->getHTML(),
-            "articleComments" => $ArticleComments->findAllWhere("articleId = ?" , $pageId),
+            "articleComments" => $ArticleComments->findAllWhere("articleId = ?", $pageId),
             "comments" => $comments->findAllWhere("articleId = ?", $pageId),
             "commentForm" => $commentForm->getHTML(),
         ]);

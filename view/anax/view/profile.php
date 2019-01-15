@@ -35,12 +35,12 @@ endif;
 <h1> Answers / Comments </h1>
     <?php foreach ($comments as $item) : ?>
         <?php foreach ($articles as $a) : ?>
-            <?php if ($item->articleId == $a->id): ?>
+            <?php if ($item->articleId == $a->id) : ?>
             <div>
                 <a href="<?= url("article/" . $a->id) ?>">
                     <p> <?= $a->title ?> </p>
                 </a>
             </div>
-        <?php endif; ?>
-    <?php endforeach;?>
-<?php endforeach; ?>
+            <?php endif; ?>
+        <?php endforeach;?>
+    <?php endforeach; ?>
