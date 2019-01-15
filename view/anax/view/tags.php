@@ -13,6 +13,7 @@ $items = isset($articles) ? $articles : null;
 endif;
 ?>
 
+<h1> Tags </h1>
 <?php foreach ($articles as $a) : ?>
         <ul>
             <?php foreach (json_decode($a->tags) as $tag) : ?>

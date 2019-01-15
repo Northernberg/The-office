@@ -88,4 +88,9 @@ class CreateUserForm extends FormModel
         $this->form->addOutput("User was created.");
         return true;
     }
+
+    public function callbackSuccess()
+    {
+        $this->di->get("response")->redirect("")->send();
+    }
 }

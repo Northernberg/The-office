@@ -83,4 +83,8 @@ class CreatePostForm extends FormModel
         $this->form->addOutput("Post was created.");
         return true;
     }
+    public function callbackSuccess()
+    {
+        $this->di->get("response")->redirect("article")->send();
+    }
 }

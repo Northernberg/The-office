@@ -1,6 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Special+Elite');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+h1,
+h2,
+.outer-wrap-header a,
+.logo-text {
+    font-family: 'Special Elite', cursive;
+}
+
+.logo-text {
+    margin-top: 24px;
+}
+
+a:visited {
+    color: black;
+}
+li {
+    list-style: none;
+}
+
+body {
+    font-family: 'Inconsolata', monospace;
+}
 .flex,
 .flex-around {
     display: flex;
+}
+
+.container {
+    display: flex;
+}
+
+.columns {
+    justify-content: space-between;
 }
 
 a {
@@ -8,7 +39,8 @@ a {
     color: black;
 }
 
-p {
+p,
+ul {
     margin: 0;
 }
 
@@ -58,6 +90,7 @@ p {
 
 .outer-wrap-main {
     margin-top: 48px;
+    min-height: 600px;
 }
 
 .answer {
@@ -87,7 +120,7 @@ p {
 }
 
 .post {
-
+    border: 1px solid;
     width: 80%;
 }
 

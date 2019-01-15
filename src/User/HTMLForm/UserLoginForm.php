@@ -79,4 +79,8 @@ class UserLoginForm extends FormModel
         $this->form->addOutput("User " . $user->username . " logged in.");
         return true;
     }
+    public function callbackSuccess()
+    {
+        $this->di->get("response")->redirect("")->send();
+    }
 }

@@ -23,16 +23,16 @@ endif;
 
     <?php foreach ($items as $item) : ?>
         <div class="post">
-            <a href="article/<?= $item->id ?>">
-                <?= $item->score ?>
-            </a>
+            <p>
             <a href="article/<?= $item->id ?>">
                 <?= $filter->doFilter($item->title, "markdown") ?>
             </a>
+            </p>
 
             <ul>
+                <li> Tags: </li>
                 <?php foreach (json_decode($item->tags) as $tag) : ?>
-                    <li> <?= $tag ?> </li>
+                    <li><a href="<?= url("tags/tag/" . $tag)?>"> <?= $tag ?>, </a></li>
                 <?php endforeach; ?>
             </ul>
         </div>

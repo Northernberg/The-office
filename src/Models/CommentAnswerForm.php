@@ -88,12 +88,16 @@ class CommentAnswerForm extends FormModel
         $user = new User();
         $user->setDb($this->di->get("dbqb"));
         $user->find("username", $this->di->get("session")->get("username"));
-        
+
         $user->activityScore += 1;
         $user->save();
 
 
         $this->form->addOutput("Post was created.");
         return true;
+    }
+    public function callbackSuccess()
+    {
+        $this->di->get("response")->redirect("article/" . $this->form->value("articleId"))->send();
     }
 }

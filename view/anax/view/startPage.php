@@ -12,21 +12,29 @@ namespace Anax\view;
 <p> Although the series has ended we still live on with live memes, funny throwbacks </p>
 <p> and all kinds of posts related to the show. </p>
 
-<h2> Active members </h2>
-<?php foreach ($members as $m) : ?>
-    <div class="pic">
-        <img src="https://www.gravatar.com/avatar/<?= md5(strtolower(trim($m->email))) ?>?s=100" alt="No avatar found." height="50px"/>
-        <p> <?= $m->username ?> </p>
-    </div>
-<?php endforeach; ?>
+<div class="container columns">
 
-<h2> Hot topics</h2>
-<?php foreach ($articles as $a) : ?>
-    <p><?= $a->title ?></p>
-<?php endforeach; ?>
+<div>
+    <h2> Active members </h2>
+    <?php foreach ($members as $m) : ?>
+        <div class="pic">
+            <img src="https://www.gravatar.com/avatar/<?= md5(strtolower(trim($m->email))) ?>?s=100" alt="No avatar found." height="50px"/>
+            <p><a href="<?= url("user/profile/" . $m->username)?>"> <?= $m->username ?> </a></p>
+        </div>
+    <?php endforeach; ?>
+</div>
 
-<h2> Hot tags </h2>
+<div>
+    <h2> Hot topics</h2>
+    <?php foreach ($articles as $a) : ?>
+        <p><a href="<?= url("article/" . $a->id)?>"><?= $a->title ?> </a></p>
+    <?php endforeach; ?>
+</div>
 
-<?php foreach ($tags as $t => $value) : ?>
-    <p><a href="<?= url("tags/tag/" . $t)?>"> <?= $t?> </a></p>
-<?php endforeach; ?>
+<div>
+    <h2> Hot tags </h2>
+    <?php foreach ($tags as $t => $value) : ?>
+        <p><a href="<?= url("tags/tag/" . $t)?>"> <?= $t?> </a></p>
+    <?php endforeach; ?>
+</div>
+</div class="container">

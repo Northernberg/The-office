@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS  ArticleComments, Comments, Answers, Articles, UserScores, User;
+DROP TABLE IF EXISTS  ArticleComments, Comments, Answers, Articles, User;
 
 --
 -- Table User
@@ -23,9 +23,9 @@ CREATE TABLE Articles (
     `content` TEXT NOT NULL,
     `tags` JSON NOT NULL,
     `score` INT DEFAULT 0,
-    `userId` VARCHAR (80) NOT NULL,
+    `userId` VARCHAR (80) NOT NULL ,
     `created` DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (userId) REFERENCES User(username)
+    FOREIGN KEY (userId) REFERENCES User(username) ON UPDATE CASCADE
 ) ENGINE INNODB CHARACTER SET utf8 COLLATE utf8_swedish_ci;
 
 --

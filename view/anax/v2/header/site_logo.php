@@ -14,5 +14,5 @@ namespace Anax\View;
 ?>
 <span class="flex">
     <img src="<?= asset($siteLogo) ?>" alt="<?= $siteLogoAlt ?>" width="100px" height="100px">
-    <p> The office </p>
+    <p class="logo-text"> The office </p>
 </span>

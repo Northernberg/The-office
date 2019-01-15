@@ -71,6 +71,7 @@ class TagController implements ContainerInjectableInterface
         $page = $this->di->get("page");
         $page->add("anax/view/tag-view", [
             "articles" => $article->findAllWhere("JSON_SEARCH(tags, 'one', ?) IS NOT NULL", $name),
+            "tag" => $name
         ]);
 
         return $page->render([

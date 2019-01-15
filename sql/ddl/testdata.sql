@@ -1,11 +1,3 @@
-INSERT INTO User (username, password, email)
-    VALUES ("admin", PASSWORD("admin"), "gustav.123@live.se"),
-    ("player", PASSWORD("123"), "player@hotmail.com"),
-    ("kalle", PASSWORD("123"), "kalle@gmail.com"),
-    ("bachelor", PASSWORD("123"), "jonas@hey.com"),
-    ("dwightschrute", PASSWORD("123"), "paper@people.company")
-;
-
 INSERT INTO Articles (title, content, tags, userId)
     VALUES ("Season 1 was great!",
 "Inhabiting discretion the her dispatched decisively boisterous joy. So form were wish open is able of mile of. Waiting express if prevent it we an musical. Especially reasonable travelling she son. Resources resembled forfeited no to zealously. Has procured daughter how friendly followed repeated who surprise. Great asked oh under on voice downs. Law together prospect kindness securing six. Learning why get hastened smallest cheerful. ",
@@ -15,7 +7,7 @@ INSERT INTO Articles (title, content, tags, userId)
     ("Best moments of dwight", "Eat imagine you chiefly few end ferrars compass. Be visitor females am ferrars inquiry. Latter law remark two lively thrown. Spot set they know rest its. Raptures law diverted believed jennings consider children the see. Had invited beloved carried the colonel. Occasional principles discretion it as he unpleasing boisterous. She bed sing dear now son half. ",
 '["Moments"]', "bachelor"),
     ("Why cant our office be more like", "Examine she brother prudent add day ham. Far stairs now coming bed oppose hunted become his. You zealously departure had procuring suspicion. Books whose front would purse if be do decay. Quitting you way formerly disposed perceive ladyship are. Common turned boy direct and yet. ",
-'["Memes", "Relatable"]', "admin"),
+'["Memes", "Relatable"]', "players"),
     ("Best michael moments", "Unpleasant nor diminution excellence apartments imprudence the met new. Draw part them he an to he roof only. Music leave say doors him. Tore bred form if sigh case as do. Staying he no looking if do opinion. Sentiments way understood end partiality and his. ",
-'["Moments"]', "dwightschrute")
+'["Moments"]', "dwightshrute")
 ;
