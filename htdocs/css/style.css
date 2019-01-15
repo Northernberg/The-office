@@ -1,0 +1,122 @@
+.flex,
+.flex-around {
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+p {
+    margin: 0;
+}
+
+
+.flex-around {
+    justify-content: space-around;
+}
+
+.region-main {
+    width: 100%;
+}
+
+.inner-wrap-main {
+    padding-top: 48px;
+    display: flex;
+}
+
+.side-menu a {
+    text-decoration: none;
+    color: black;
+}
+
+.side-menu {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5px;
+    font-size: 1.5em;
+    font-family: Cambria,Georgia,Times,'Times New Roman',serif;
+}
+
+.side-menu li {
+    list-style: none;
+    padding-right: 1em;
+}
+
+.outer-wrap-header {
+    position: fixed;
+    width: 100%;
+    border-bottom: 1px solid;
+    background-color: white;
+    top: 0;
+}
+
+.outer-wrap-main {
+    margin-top: 48px;
+}
+
+.answer {
+    display: flex;
+    height: 5em;
+}
+
+.comments:nth-child(1n+0){
+    margin-left: 4em;
+}
+
+.answer p {
+    margin-left: 1em;
+}
+
+.pic p {
+    margin: 0;
+}
+
+.dunder {
+    width: 600px;
+    height: 400px;
+}
+
+.startPic {
+    display: flex;
+}
+
+.post {
+
+    width: 80%;
+}
+
+.post a:last-of-type {
+    flex-basis: 90%;
+}
+
+.post ul {
+    display: flex;
+    list-style: none;
+}
+
+.post li:nth-child(1n+2) {
+    margin-left: 10px;
+}
+.votes {
+    margin-right: 20px;
+}
+
+.profile-info {
+    padding-left: 10px;
+    margin-left: 12px;
+    border: 1px solid;
+    width: 400px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-info img {
+    padding-top: 10px;
+}
+
+.profile-info > div {
+    font-size: 24px;
+}
