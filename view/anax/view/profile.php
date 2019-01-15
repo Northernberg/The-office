@@ -41,11 +41,36 @@ endif;
     <?php foreach ($comments as $item) : ?>
         <?php foreach ($articles as $a) : ?>
             <?php if ($item->articleId == $a->id) : ?>
-            <div>
-                <a href="<?= url("article/" . $a->id) ?>">
-                    <p> <?= $a->title ?> </p>
-                </a>
-            </div>
+                <div>
+                    <a href="<?= url("article/" . $a->id) ?>">
+                        <p> <?= $a->title ?> </p>
+                    </a>
+                </div>
+            <?php endif; ?>
+        <?php endforeach;?>
+    <?php endforeach; ?>
+
+    <?php foreach ($answers as $item) : ?>
+        <?php foreach ($articles as $a) : ?>
+            <?php if ($item->articleId == $a->id) : ?>
+                <div>
+                    <a href="<?= url("article/" . $a->id) ?>">
+                        <p> <?= $a->title ?> </p>
+                    </a>
+                </div>
+            <?php endif; ?>
+        <?php endforeach;?>
+    <?php endforeach; ?>
+
+
+    <?php foreach ($articleComments as $item) : ?>
+        <?php foreach ($articles as $a) : ?>
+            <?php if ($item->articleId == $a->id) : ?>
+                <div>
+                    <a href="<?= url("article/" . $a->id) ?>">
+                        <p> <?= $a->title ?> </p>
+                    </a>
+                </div>
             <?php endif; ?>
         <?php endforeach;?>
     <?php endforeach; ?>

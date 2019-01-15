@@ -21,7 +21,7 @@ CREATE TABLE Articles (
     `id` INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
     `title` VARCHAR(80) NOT NULL,
     `content` TEXT NOT NULL,
-    `tags` JSON NOT NULL,
+    `tags` VARCHAR(255),
     `score` INT DEFAULT 0,
     `userId` VARCHAR (80) NOT NULL ,
     `created` DATETIME DEFAULT CURRENT_TIMESTAMP,

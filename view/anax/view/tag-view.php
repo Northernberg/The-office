@@ -12,7 +12,7 @@ namespace Anax\View;
         </li>
         <ul>
             <li> Tags: </li>
-            <?php foreach (json_decode($a->tags) as $tag) : ?>
+            <?php foreach (unserialize($a->tags) as $tag) : ?>
                 <li><a href="<?= url("tags/tag/" . $tag)?>"> <?= $tag ?>, </a></li>
             <?php endforeach; ?>
         </ul>

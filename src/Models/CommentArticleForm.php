@@ -82,7 +82,7 @@ class CommentArticleForm extends FormModel
         $user = new User();
         $user->setDb($this->di->get("dbqb"));
         $user->find("username", $this->di->get("session")->get("username"));
-        
+
         $user->activityScore += 1;
         $user->save();
 

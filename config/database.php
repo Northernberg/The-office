@@ -14,11 +14,13 @@
  *  "dsn" => "sqlite:memory::",
  *
  */
+
+
 if ($_SERVER["SERVER_NAME"] === "www.student.bth.se") {
     return [
-        "dsn"             => "mysql:host=blu-ray.student.bth.se;dbname=guno17;",
+        "dsn"             => "mysql:host=blu-ray.student.bth.se:3306;dbname=guno17;",
         "username"        => "guno17",
-        "password"        => "hemligt",
+        "password"        => require ANAX_INSTALL_PATH . "/config/studentserver.php",
         "driver_options"  => [
             \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"
         ],

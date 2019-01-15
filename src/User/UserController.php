@@ -9,6 +9,8 @@ use Anax\User\HTMLForm\CreateUserForm;
 use Anax\Models\EditPasswordForm;
 use Anax\Models\EditProfileForm;
 use Anax\Models\Article;
+use Anax\Models\ArticleComment;
+use Anax\Models\Answers;
 use Anax\Models\Comment;
 
 // use Anax\Route\Exception\ForbiddenException;
@@ -182,6 +184,14 @@ class UserController implements ContainerInjectableInterface
         $comments = new Comment();
         $comments->setDb($this->di->get("dbqb"));
 
+        //Comments
+        $answers = new Answers();
+        $answers->setDb($this->di->get("dbqb"));
+
+        //Comments
+        $answerComments = new ArticleComment();
+        $answerComments->setDb($this->di->get("dbqb"));
+
 
         $page = $this->di->get("page");
 
@@ -190,6 +200,8 @@ class UserController implements ContainerInjectableInterface
             "user" => $user,
             "items" => $articles->findAllWhere("userId = ?", $user->username),
             "comments" => $comments->findAllWhere("userId = ?", $user->username),
+            "answers" => $answers->findAllWhere("username = ?", $user->username),
+            "articleComments" => $answerComments->findAllWhere("userId = ?", $user->username),
             "articles" => $articles->findAll(),
         ]);
 

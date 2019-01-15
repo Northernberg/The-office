@@ -31,7 +31,7 @@ endif;
 
             <ul>
                 <li> Tags: </li>
-                <?php foreach (json_decode($item->tags) as $tag) : ?>
+                <?php foreach (unserialize($item->tags) as $tag) : ?>
                     <li><a href="<?= url("tags/tag/" . $tag)?>"> <?= $tag ?>, </a></li>
                 <?php endforeach; ?>
             </ul>

@@ -69,8 +69,16 @@ class TagController implements ContainerInjectableInterface
         $article = new Article();
         $article->setDb($this->di->get("dbqb"));
         $page = $this->di->get("page");
+
+        $arr = [];
+        foreach($article->findAll() as $a) {
+            if (in_array($name, unserialize($a->tags))) {
+                array_push($arr, $a);
+            }
+        }
+
         $page->add("anax/view/tag-view", [
-            "articles" => $article->findAllWhere("JSON_SEARCH(tags, 'one', ?) IS NOT NULL", $name),
+            "articles" => $arr,
             "tag" => $name
         ]);
 

@@ -64,7 +64,7 @@ class MainController implements ContainerInjectableInterface
         $arr = [];
 
         foreach ($all as $a) {
-            foreach (json_decode($a->tags) as $t) {
+            foreach (unserialize($a->tags, ['allowed_classes' => false]) as $t) {
                 array_push($arr, $t);
             }
         }
@@ -72,13 +72,13 @@ class MainController implements ContainerInjectableInterface
         arsort($arr);
 
         // Find Articles time order
-        $sql = "select * from articles ORDER BY created DESC LIMIT 3";
+        $sql = "select * from Articles ORDER BY created DESC LIMIT 3";
         $db = $this->di->get("db");
         $db->connect();
         $res = $db->executeFetchAll($sql);
 
         // Find active memebers
-        $sql = "select * from user ORDER BY activityScore DESC LIMIT 5";
+        $sql = "select * from User ORDER BY activityScore DESC LIMIT 5";
         $db = $this->di->get("db");
         $db->connect();
         $members = $db->executeFetchAll($sql);

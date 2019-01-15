@@ -70,7 +70,7 @@ class CreatePostForm extends FormModel
         $article->setDb($this->di->get("dbqb"));
         $article->title = $title;
         $article->content = $content;
-        $article->tags = json_encode($tags);
+        $article->tags = serialize($tags);
         $article->userId = $user->username;
         $article->save();
 
