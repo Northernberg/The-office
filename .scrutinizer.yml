@@ -6,15 +6,16 @@ filter:
 
 build:
     nodes:
+         my-tests:
+              environment:
+                    php: version: 7.2
         analysis:
             tests:
                 override:
                     - php-scrutinizer-run
-
         tests-and-coverage:
             tests:
                 override:
-                    -
                         command: "make phpunit"
                         coverage:
                             file: "build/coverage.clover"
