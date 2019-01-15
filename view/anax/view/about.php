@@ -18,4 +18,4 @@ namespace Anax\view;
 <p> My favorite food is tacos and at some occasionally I might go out to the student pub. </p>
 
 <h2> Github </h2>
-<p> </p>
+<p> <a href="https://github.com/Northernberg/The-office"> Link to my github repository </a></p>

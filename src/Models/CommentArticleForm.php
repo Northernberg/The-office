@@ -77,6 +77,15 @@ class CommentArticleForm extends FormModel
         $comment->userId= $this->di->get("session")->get("username");
         $comment->save();
 
+        // Save score
+
+        $user = new User();
+        $user->setDb($this->di->get("dbqb"));
+        $user->find("username", $this->di->get("session")->get("username"));
+        
+        $user->activityScore += 1;
+        $user->save();
+
         $this->form->addOutput("Created comment.");
         return true;
     }

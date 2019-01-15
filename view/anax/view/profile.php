@@ -31,7 +31,7 @@ endif;
         <div>Posts:</div>
     </div>
 </div>
-
+<p class="right"><a href="<?= url("user/edit/" . $user->id)?>"> edit profile </a></p>
 <h1> Answers / Comments </h1>
     <?php foreach ($comments as $item) : ?>
         <?php foreach ($articles as $a) : ?>

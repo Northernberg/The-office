@@ -13,8 +13,17 @@ namespace Anax\view;
 <p> and all kinds of posts related to the show. </p>
 
 <h2> Active members </h2>
+<?php foreach ($members as $m) : ?>
+    <div class="pic">
+        <img src="https://www.gravatar.com/avatar/<?= md5(strtolower(trim($m->email))) ?>?s=100" alt="No avatar found." height="50px"/>
+        <p> <?= $m->username ?> </p>
+    </div>
+<?php endforeach; ?>
 
 <h2> Hot topics</h2>
+<?php foreach ($articles as $a) : ?>
+    <p><?= $a->title ?></p>
+<?php endforeach; ?>
 
 <h2> Hot tags </h2>
 

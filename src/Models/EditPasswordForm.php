@@ -4,39 +4,41 @@ namespace Anax\Models;
 
 use Anax\HTMLForm\FormModel;
 use Psr\Container\ContainerInterface;
+use Anax\Models\Answers;
 use Anax\Models\Article;
-use Anax\Models\UserScore;
 use Anax\User\User;
 
 /**
  * Example of FormModel implementation.
  */
-class CreatePostForm extends FormModel
+class EditPasswordForm extends FormModel
 {
     /**
      * Constructor injects with DI container.
      *
      * @param Psr\Container\ContainerInterface $di a service container
      */
-    public function __construct(ContainerInterface $di)
+    public function __construct(ContainerInterface $di, $id)
     {
         parent::__construct($di);
+        $user = $this->getItemDetails($id);
         $this->form->create(
             [
                 "id" => __CLASS__,
-                "legend" => "Legend",
+                "legend" => "Password change",
             ],
             [
-                "Title" => [
-                    "type" => "text",
+                "id" => [
+                    "type" => "hidden",
+                    "validation" => ["not_empty"],
+                    "value" => $user->id,
                 ],
-                "Body" => [
-                    "type" => "textarea",
+                "OldPassword" => [
+                    "type" => "password"
                 ],
-                "Tags" => [
-                    "type" => "text"
+                "NewPassword" => [
+                    "type" => "password"
                 ],
-
                 "submit" => [
                     "type" => "submit",
                     "value" => "Create post",
@@ -44,6 +46,14 @@ class CreatePostForm extends FormModel
                 ],
             ]
         );
+    }
+
+    public function getItemDetails($id) : object
+    {
+        $user = new User();
+        $user->setDb($this->di->get("dbqb"));
+        $user->find("id", $id);
+        return $user;
     }
 
 
@@ -57,30 +67,25 @@ class CreatePostForm extends FormModel
     public function callbackSubmit()
     {
         // Get values from the submitted form
-        $title        = $this->form->value("Title");
-        $content      = $this->form->value("Body");
-        $tags         = explode(" ", $this->form->value("Tags"));
+        $id             = $this->form->value("id");
+        $password       = $this->form->value("OldPassword");
+        $newPassword    = $this->form->value("NewPassword");
 
         $user = new User();
         $user->setDb($this->di->get("dbqb"));
-        $user->find("username", $this->di->get("session")->get("username"));
+        $user->find("id", $id);
+
+        if (!password_verify($password, $user->password)) {
+           $this->form->rememberValues();
+           $this->form->addOutput("Old password incorrect");
+           return false;
+        }
 
         // Save to database
-        $article = new Article();
-        $article->setDb($this->di->get("dbqb"));
-        $article->title = $title;
-        $article->content = $content;
-        $article->tags = json_encode($tags);
-        $article->userId = $user->username;
-        $article->save();
-
-        // Save user score
-
-        $user->posts += 1;
-        $user->activityScore += 1;
+        $user->setPassword($newPassword);
         $user->save();
 
-        $this->form->addOutput("Post was created.");
+        $this->form->addOutput("Changed password.");
         return true;
     }
 }

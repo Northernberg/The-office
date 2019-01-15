@@ -6,6 +6,8 @@ use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
 use Anax\User\HTMLForm\UserLoginForm;
 use Anax\User\HTMLForm\CreateUserForm;
+use Anax\Models\EditPasswordForm;
+use Anax\Models\EditProfileForm;
 use Anax\Models\Article;
 use Anax\Models\Comment;
 
@@ -121,6 +123,47 @@ class UserController implements ContainerInjectableInterface
 
         return $page->render([
             "title" => "A create user page",
+        ]);
+    }
+
+    public function editAction($id) : object
+    {
+        $user = new User();
+        $user->setDb($this->di->get("dbqb"));
+        $user->find("id", $id);
+
+        $form = new EditProfileForm($this->di,$id);
+        $form->check();
+
+        $page = $this->di->get("page");
+
+        $page->add("anax/view/editProfile", [
+            "user" => $user,
+            "form" => $form->getHTML()
+        ]);
+
+        return $page->render([
+            "title" => "Profile page",
+        ]);
+    }
+
+    public function editPasswordAction($id) : object
+    {
+        $user = new User();
+        $user->setDb($this->di->get("dbqb"));
+        $user->find("id", $id);
+
+        $form = new EditPasswordForm($this->di,$id);
+        $form->check();
+
+        $page = $this->di->get("page");
+
+        $page->add("anax/view/editPassword", [
+            "form" => $form->getHTML()
+        ]);
+
+        return $page->render([
+            "title" => "Profile page",
         ]);
     }
 

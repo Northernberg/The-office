@@ -22,10 +22,9 @@ class User extends ActiveRecordModel
     public $email;
     public $username;
     public $password;
-    public $created;
-    public $updated;
-    public $deleted;
-    public $active;
+    public $activityScore;
+    public $posts;
+
 
     /**
      * Set the password.

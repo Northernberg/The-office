@@ -80,6 +80,16 @@ class AnswerForm extends FormModel
         $answer->username = $this->di->get("session")->get("username");
         $answer->save();
 
+        // Save score
+
+        $user = new User();
+        $user->setDb($this->di->get("dbqb"));
+        $user->find("username", $this->di->get("session")->get("username"));
+        
+        $user->activityScore += 1;
+        $user->save();
+
+
         $this->form->addOutput("Post was created.");
         return true;
     }

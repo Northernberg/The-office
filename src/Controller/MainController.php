@@ -59,6 +59,7 @@ class MainController implements ContainerInjectableInterface
         $article = new Article();
         $article->setDb($this->di->get("dbqb"));
 
+        // Find tags popular
         $all = $article->findAll();
         $arr = [];
 
@@ -70,9 +71,22 @@ class MainController implements ContainerInjectableInterface
         $arr = array_count_values($arr);
         arsort($arr);
 
+        // Find Articles time order
+        $sql = "select * from articles ORDER BY created DESC LIMIT 3";
+        $db = $this->di->get("db");
+        $db->connect();
+        $res = $db->executeFetchAll($sql);
+
+        // Find active memebers
+        $sql = "select * from user ORDER BY activityScore DESC LIMIT 5";
+        $db = $this->di->get("db");
+        $db->connect();
+        $members = $db->executeFetchAll($sql);
+
         $page = $this->di->get("page");
         $page->add("anax/view/startPage", [
-            "articles" => $article->findAll(),
+            "members" => $members,
+            "articles" => $res,
             "tags" => array_slice($arr, 0, 5)
         ]);
 

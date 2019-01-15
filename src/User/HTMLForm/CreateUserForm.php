@@ -5,6 +5,7 @@ namespace Anax\User\HTMLForm;
 use Anax\HTMLForm\FormModel;
 use Psr\Container\ContainerInterface;
 use Anax\User\User;
+use Anax\Models\UserScore;
 
 /**
  * Example of FormModel implementation.
@@ -82,6 +83,7 @@ class CreateUserForm extends FormModel
         $user->username = $username;
         $user->setPassword($password);
         $user->save();
+
 
         $this->form->addOutput("User was created.");
         return true;

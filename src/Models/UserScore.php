@@ -7,12 +7,12 @@ use Anax\DatabaseActiveRecord\ActiveRecordModel;
 /**
  * A database driven model using the Active Record design pattern.
  */
-class Article extends ActiveRecordModel
+class UserScore extends ActiveRecordModel
 {
     /**
      * @var string $tableName name of the database table.
      */
-    protected $tableName = "Articles";
+    protected $tableName = "UserScores";
 
 
 
@@ -22,8 +22,6 @@ class Article extends ActiveRecordModel
      * @var integer $id primary key auto incremented.
      */
     public $id;
-    public $userId;
-    public $title;
-    public $content;
-    public $tags;
+    public $activityScore;
+    public $posts;
 }
